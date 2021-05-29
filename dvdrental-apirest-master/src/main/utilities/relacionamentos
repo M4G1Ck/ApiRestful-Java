@@ -1,0 +1,20 @@
+Relacionamentos
+
+Actor -> Film_Actor = One to Zero or One
+Address -> Costumer = One to Zero or Many
+Address -> Staff = One to Zero or Many
+Address -> Store = One to Zero or Many
+Category -> Film_Category = One to Zero or One
+City -> Address = One to Zero or Many
+Country -> City = One to Zero or Many
+Customer -> Payment = One to Zero or Many
+Customer -> Rental = One to Zero or One
+Film -> Film_Actor = One to Zero or One
+Film -> Film_Category = One to Zero or One
+Film -> Inventory = One to Zero or Many
+Inventory -> Rental = One to Zero or One
+Language -> Film = One to Zero or Many
+Rental -> Payment = One to Zero or Many
+Staff -> Rental = One to Zero or Many
+Staff -> Payment = One to Zero or Many
+Staff -> Store = One to Zero or One
