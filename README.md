@@ -4,5 +4,5 @@ BackEnd-Java desenvolvido pelo grupo feito pelo professor <a href="https://githu
 
 ✔️ Atividade I : Criação do Projeto API DVDRental (Entidades e Repositórios) <br>
 ✔️ Atividade II: Projeto API Dell Store <br>
-✔️ Atividade III: @Validations e Tratamento de Exceções <br>
+✔️ Atividade III: @Validations e Tratamento de Exceções <a href="https://github.com/M4G1Ck/apiRestful-Java/tree/main/api-dell-master">Exemplo</a> <br>
 ❌ Atividade IV: Projeto API E-commerce <br>
