@@ -48,7 +48,7 @@ public class ClienteService {
         return cliente;
     }
 
-    //Update cliente
+    //Atualizar cliente
     public Cliente update (CadastroCliente cadastroCliente, Integer id) {
 
         Cliente cliente = clienteRepository.getById(id);

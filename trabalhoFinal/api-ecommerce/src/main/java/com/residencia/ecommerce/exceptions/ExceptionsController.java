@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionsController {
 
     @ExceptionHandler(CategoriaNotFoundException.class)
-    public ResponseEntity<String> trataCategoriaNotFound(CategoriaNotFoundException e){
+    public ResponseEntity<String> trataCategoriaNotFound(CategoriaNotFoundException e) {
         return ResponseEntity
                 .notFound()
                 .header("error-code", "CATEGORIA_NOT_FOUND")
-                .header("error-value", String.valueOf.valueOf(e.getId()))
+                .header("error-value", String.valueOf(e.getId()))
                 .build();
     }
 

@@ -17,7 +17,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     //Cadastro
-    @PostMapping("/cadastro")
+    @PostMapping("/cadastrar")
     public ResponseEntity<Cliente> cadastrar(@RequestBody CadastroCliente cadastroCliente){
         HttpHeaders headers = new HttpHeaders();
         Cliente novoCliente = clienteService.cadastro(cadastroCliente);
@@ -30,13 +30,13 @@ public class ClienteController {
     }
 
     //Update
-    @PutMapping("/update/{id}")
+    @PutMapping("/atualizar/{id}")
     public Cliente update(@RequestBody CadastroCliente cadastro, @PathVariable Integer id){
         return clienteService.update(cadastro, id);
     }
 
     //Deletar conta
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public  ResponseEntity<Cliente> delete (@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
         boolean deletada = clienteService.delete(id);

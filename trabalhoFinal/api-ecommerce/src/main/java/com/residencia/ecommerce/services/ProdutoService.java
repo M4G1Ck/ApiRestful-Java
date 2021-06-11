@@ -1,9 +1,12 @@
 package com.residencia.ecommerce.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.residencia.ecommerce.entities.Categoria;
 import com.residencia.ecommerce.entities.Produto;
+import com.residencia.ecommerce.repositories.CategoriaRepository;
 import com.residencia.ecommerce.repositories.ProdutoRepository;
 import com.residencia.ecommerce.exceptions.ProdutoNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,9 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public Produto findProduto(Integer id) throws ProdutoNotFoundException{
             Optional<Produto> achado = produtoRepository.findById(id); //se o produto for "achado" ele retorna o produto pelo id
@@ -32,15 +38,9 @@ public class ProdutoService {
         return findProduto(id);
     }
 
-    //Create
-    public Produto adicionaProduto (Produto produto) {
-        Produto newProduto = produtoRepository.save(produto);
-        if (newProduto.getIdProduto() != null) {
-            return newProduto;
-        }
-        else {
-            return null;
-        }
+    //Cadastrar produto
+    public Produto cadastro (Produto produto) {
+       return produtoRepository.save(produto);
     }
 
     //Update
@@ -59,14 +59,14 @@ public class ProdutoService {
         }
     }
 
-        //Create com imagem
-        public Produto adicionaImagemProduto (Produto produto) {
-            Produto newProduto = produtoRepository.save(produto);
-            if (newProduto.getIdProduto() != null) {
-                return newProduto;
-            }
-            else {
-                return null;
-            }
-}
+    //Create com imagem
+    public Produto adicionaImagemProduto (Produto produto) {
+        Produto newProduto = produtoRepository.save(produto);
+        if (newProduto.getIdProduto() != null) {
+            return newProduto;
+        }
+        else {
+            return null;
+        }
+    }
 }

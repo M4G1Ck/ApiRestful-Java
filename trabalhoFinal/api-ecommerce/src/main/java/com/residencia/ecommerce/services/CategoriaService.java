@@ -18,36 +18,40 @@ public class CategoriaService {
     @Autowired
     CategoriaRepository categoriaRepository;
 
-    public Categoria buscarPorId(Integer idCategoria){
-        return categoriaRepository.getById(idCategoria);
+    //Buscar categoria pelo id
+    public Categoria buscarPorId(Integer id){
+        return categoriaRepository.findById(id).get();
     }
 
+    //Buscar todas as categorias
     public List<Categoria> buscarTodos(){
         return categoriaRepository.findAll();
     }
 
-     //cria ctageoria
-    public Categoria cadastrar(Categoria categoria){
+    //Cadastra categoria
+    public Categoria cadastro (Categoria categoria){
         return categoriaRepository.save(categoria);
     }
 
-    //atualizar categoria existente (no controller,categoria informada por @RequestBody
-    public Boolean atualizar(Integer idCategoria, Categoria categoria){
+    //Atualizar categoria
+    public Boolean update (Integer idCategoria, Categoria categoria){
+
         Categoria updatedCategoria = categoriaRepository.findById(idCategoria).get();
+
         updatedCategoria.setIdCategoria(idCategoria);
         updatedCategoria.setNomeCategoria(categoria.getNomeCategoria());
         updatedCategoria.setDescricao(categoria.getDescricao());
         updatedCategoria.setProdutos(categoria.getProdutos());
         categoriaRepository.save(updatedCategoria);
+
         if(updatedCategoria == categoria)
             return true;
         else
             return false;
-
     }
 
-    //deletar categoria existente pelo id
-    public boolean deletar(Integer idCategoria){
+    //Deletar categoria
+    public boolean deletar (Integer idCategoria){
         if(idCategoria != null) {
             categoriaRepository.deleteById(idCategoria);
             return true;

@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.residencia.ecommerce.entities.Cliente;
 import com.residencia.ecommerce.entities.Produto;
 import com.residencia.ecommerce.exceptions.ProdutoNotFoundException;
 import com.residencia.ecommerce.services.ProdutoService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,9 +38,17 @@ public class ProdutoController {
         return produtoService.retornaUmProduto(id);
     }
 
-    @PostMapping
-    public Produto adicionaProduto(@Valid @RequestBody Produto produto) throws ProdutoNotFoundException {
-        return produtoService.adicionaProduto(produto);
+    //Cadastrar produto
+    @PostMapping("/cadastrar")
+    public ResponseEntity<Produto> adicionaProduto(@Valid @RequestBody Produto produto) throws ProdutoNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        Produto novoProduto = produtoService.cadastro(produto);
+
+        if (null != novoProduto){
+            return new ResponseEntity<>(novoProduto, headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, headers, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")

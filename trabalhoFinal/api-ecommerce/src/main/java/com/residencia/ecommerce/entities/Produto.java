@@ -1,5 +1,6 @@
 package com.residencia.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,15 +34,16 @@ public class Produto {
 
     @CreationTimestamp
     @Column(name = "data_cadastro_produto")
-    private Timestamp dataCadastroProduto;
+    private Timestamp dataCadastro;
 
     @Column(name = "imagem")
     private Byte imagem;
 
     @ManyToOne //Relacionamento com Categoria
-    @JoinColumn(name = "id_categoria")
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     private Categoria idCategoria;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "produto") //Relacionamento com ProdutosPedido
     private ProdutosPedido pedido;
 
