@@ -3,7 +3,6 @@ BackEnd-Java desenvolvido pelo grupo feito pelo professor <a href="https://githu
 <h1 align="center">Grupo-05</h1>
 
 ✔️ Atividade I : Criação do Projeto API DVDRental (Entidades e Repositórios) <br>
-❌ Atividade II: Projeto API DVDRental (Serviços CRUD e Controllers) <br>
-❌ Atividade III: Projeto API DVDRental (Mapeamento Entidade x VO) <br>
+✔️ Atividade II: Projeto API Dell Store <br>
+✔️ Atividade III: @Validations e Tratamento de Exceções <br>
 ❌ Atividade IV: Projeto API E-commerce <br>
-✔️ Atividade API dellstore
