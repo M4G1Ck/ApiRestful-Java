@@ -1,0 +1,52 @@
+create table public.endereco(
+	id_endereco serial not null,
+	CEP int4 null,
+	rua varchar(100) null,
+	bairro varchar(50) null,
+	cidade varchar(50) null,
+	estado varchar(30)null,
+	numero int4 null,
+	complemento varchar(30) null,
+	constraint endereco_pkey primary key (id_endereco)
+);
+
+create table public.cliente(
+	id_cliente serial not null primary key,
+	email varchar null,
+	username varchar(30) not null unique,
+	senha varchar(30) not null,
+	nome varchar(100) not null,
+	CPF varchar(11) not null unique,
+	telefone int4 null,
+	data_nascimento date null,
+	id_endereco serial not null references endereco (id_endereco) /*foreign key*/
+);
+
+create table public.pedido(
+	id_pedido serial not null primary key,
+	numero_pedido int4 not null  unique, /*lista_produtos_pedido  analisar*/
+	valor_total_pedido int4 not null,
+	data_pedido date not null,
+	status boolean default false,
+	id_cliente serial not null references cliente (id_cliente) /*foreign key*/
+);
+
+
+
+
+create table public.categoria(
+	id_categoria serial not null primary key,
+	nome_categoria varchar(50) not null unique,
+	descricao varchar(150) null
+);
+
+create table public.produto(
+	id_produto serial not null primary key,
+	nome_produto varchar(50) not null,
+	descricao varchar(150) null,
+	preco numeric not null,
+	quant_em_estoque int4 not null,
+	data_cadastro_produto date not null,
+	imagem bytea null,
+	id_categoria serial not null references categoria(id_categoria) /*foreign key*/
+);
